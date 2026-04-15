@@ -41,4 +41,9 @@ router.get('/testsql', async (request, response) => {
     }
 });
 
+router.get('/movies', async (req, res) => {
+    const movies = await database.film();
+    res.status(200).json({ movies: movies });
+});
+
 module.exports = router;

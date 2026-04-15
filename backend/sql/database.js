@@ -4,7 +4,7 @@ const pool = mysql.createPool({
     host: '127.0.0.1',
     user: 'root',
     password: '',
-    database: 'exampledb',
+    database: 'gormulo',
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0
@@ -16,7 +16,14 @@ async function selectall() {
     const [rows] = await pool.execute(query);
     return rows;
 }
+
+async function film() {
+    const [rows] = await pool.execute(`SELECT * FROM movies`);
+    return rows;
+}
+
 //!Export
 module.exports = {
-    selectall
+    selectall,
+    film
 };
